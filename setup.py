@@ -8,11 +8,11 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="desmos-studio",
-    version="1.0.1",
-    description="Convert images to mathematical curves for Desmos or matplotlib",
+    version="1.2.2",
+    description="Convert images and videos to mathematical curves for Desmos or matplotlib",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/image2curves",
+    url="https://github.com/yusuff-bot/desmos-studio",
     author="Yusuf Sabuwala",
     author_email="yusuff.0279@gmail.com",
     license="MIT",
@@ -36,6 +36,8 @@ setup(
     install_requires=[
         "matplotlib>=3.0.0",
         "svgpathtools>=1.4.0",
+        "opencv-python>=4.5.0",
+        "numpy>=1.19.0",
     ],
     extras_require={
         "dev": [
@@ -45,10 +47,13 @@ setup(
             "twine",
             "build",
         ],
+        "video": [
+            "yt-dlp>=2023.1.0",  # For YouTube downloads
+        ],
     },
     entry_points={
         "console_scripts": [
-            "desmos-art=desmos_art.cli:main",
+            "desmos-studio=desmos_studio.cli:main",
         ],
     },
     project_urls={
