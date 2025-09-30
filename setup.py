@@ -8,7 +8,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="desmos-studio",
-    version="1.2.2",
+    version="1.2.3",
     description="Convert images and videos to mathematical curves for Desmos or matplotlib",
     long_description=README,
     long_description_content_type="text/markdown",

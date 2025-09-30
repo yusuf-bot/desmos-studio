@@ -128,7 +128,7 @@ class Image2Curves:
         print(f"📁 Sample plot files: {plot_paths[:3]} ...")
         return plot_paths
 
-    def create_video_from_plots(self, plot_paths, output_video, fps=30):
+    def create_video_from_plots(self, plot_paths, output_video, input_video,fps=30):
         """Combine matplotlib plots into a video"""
         if not plot_paths:
             raise RuntimeError("No plot images to create video from")
@@ -146,7 +146,7 @@ class Image2Curves:
             # In Method 1 (add these parameters):
             subprocess.run([
                 "ffmpeg", "-y",
-                "-i", original_video_path,  # Add original video as input
+                "-i", input_video,  # Add original video as input
                 "-framerate", str(fps),
                 "-pattern_type", "glob", 
                 "-i", f"{plot_dir}/frame_*_plot.png",
@@ -258,7 +258,7 @@ class Image2Curves:
             
             # Step 3: Create final video
             final_fps = target_fps if target_fps else original_fps
-            self.create_video_from_plots(plot_paths, output_video, final_fps)
+            self.create_video_from_plots(plot_paths, output_video, input_video ,final_fps)
             
             print(f"🎉 Video conversion completed: {output_video}")
             
@@ -545,7 +545,7 @@ Examples:
     
     parser.add_argument('--version', 
                        action='version', 
-                       version='%(prog)s 1.0.0')
+                       version='%(prog)s 1.2.2')
 
     args = parser.parse_args()
     
